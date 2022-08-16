@@ -1,3 +1,11 @@
-��������� ������� docker-compose up -d
-mysql  -uroot  -proot
-/docker-entrypoint-initdb.d - ���������� � ������� ��� ���� ����������� ���  1 �������'
+﻿запуск сборки - docker-compose up -d
+вход в базу mysql - mysql  -uroot  -proot
+
+
+Копирование файла из рабочего контейнера в локальную директорию
+# docker cp php_mysql_1:./docker-entrypoint-initdb.d/имя_файла.расширение Path_local_directory 
+(docker cp php_mysql_1:./docker-entrypoint-initdb.d/Products.sql S:\)
+
+Копирование из директории в контейнер
+# docker cp file.txt  4f20e373e04b:/root
+docker cp S:\Products.sql php_mysql_1:./docker-entrypoint-initdb.d/
