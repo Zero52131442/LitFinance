@@ -1,0 +1,3 @@
+запустить команду docker-compose up -d
+mysql  -uroot  -proot
+/docker-entrypoint-initdb.d - директория в которой все дамы загружаются при  1 запуске'

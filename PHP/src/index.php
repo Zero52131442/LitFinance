@@ -1,6 +1,6 @@
 <?php
 
-
+echo "<pre>";
 $link = mysqli_connect('mysql','root','root');
 $res = mysqli_query($link,"SHOW DATABASES");
 
