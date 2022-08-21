@@ -1,10 +1,20 @@
-version: '3.1'
+version: '3.9'
 services:
   php:
     build:
       context: ./docker/php
+    depends_on:
+      mysql:
+        condition: service_healthy
     volumes:
       - './src:/var/www/html'
+    healthcheck: 
+      test: ["CMD","php-fpm","-t"] 
+      interval: 3s 
+      timeout: 5s 
+      retries: 5 
+      start_period: 1s 
+    
 
   nginx:
     image: zero5213/mynginx
@@ -12,14 +22,22 @@ services:
       - 80:80
     volumes:
       - './src:/var/www/html'
-
+    depends_on:
+        php:
+           condition: service_healthy
 
   mysql:
     image: mysql:latest   
     environment:
       - MYSQL_ROOT_PASSWORD=root
-    restart: always
     command: --default-authentication-plugin=mysql_native_password
+    healthcheck:
+      test: ["CMD-SHELL", 'mysql -uroot -proot']
+      interval: 3s
+      timeout: 5s
+      retries: 5
+      start_period: 1s 
+
 
     
 
