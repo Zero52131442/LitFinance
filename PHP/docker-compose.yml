@@ -3,9 +3,6 @@ services:
   php:
     build:
       context: ./docker/php
-    depends_on:
-      mysql:
-        condition: service_healthy
     volumes:
       - './src:/var/www/html'
     healthcheck: 
@@ -24,6 +21,8 @@ services:
       - './src:/var/www/html'
     depends_on:
         php:
+           condition: service_healthy
+        mysql:
            condition: service_healthy
 
   mysql:
