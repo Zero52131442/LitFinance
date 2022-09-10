@@ -9,3 +9,11 @@
 Копирование из директории в контейнер
 # docker cp file.txt  4f20e373e04b:/root
 docker cp S:\Products.sql php_mysql_1:./docker-entrypoint-initdb.d/
+
+
+При переходе на страницу localhost методом GET будут возвращены записи из таблицы (Если они были созданы)
+Для создания записи используйте метод POST Нужные параметры:["fname","lastname","age"]
+Для Изменения записей PUT  Нужные параметры :["new_name","new_lastname","new_age","old_name","old_lastname","old_age"]
+Для удаления записи DELET  Нужные параметры :["fname","lastname"]
+ 
+База с таблицей создадутся автоматически 
